@@ -1,0 +1,10 @@
+.ant-tabs-nav-wrap{
+    justify-content: center;
+}
+.ant-tabs-nav-list{
+    width: 100%;
+}
+.ant-tabs-tab{
+    width: 50%;
+    justify-content: center;
+}

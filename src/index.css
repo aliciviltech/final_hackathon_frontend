@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@font-face {
+  font-family: poppins;
+  src: url('/fonts/poppins/Poppins-Regular.ttf');
+}
+
+:root {
+  --primaryColor: #7351b1;
+  --primaryTextColor: #757575;
+}
+
+*{
+  font-family: poppins;
+}
+
+.headingH1{
+  font-size: 22px;
+  font-weight: bold;
+}
+.headingH2{
+  font-size: 22px;
+  font-weight: bold;
+}
+.headingH3{
+  font-size: 22px;
+  font-weight: bold;
+}
+.headingH4{
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.paragraphP1{
+  font-size: 16px;
+  color: #757575;
+}
+
+.paragraphP2{
+  font-size: 16px;
+  color: #757575;
+}
+
+.paragraphP3{
+  font-size: 16px;
+  color: #757575;
+}
+
+.paragraphP4{
+  font-size: 16px;
+  color: #757575;
+}
