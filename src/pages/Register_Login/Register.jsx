@@ -35,6 +35,12 @@ const Register = () => {
                 <input {...register("name",{ required: true })} placeholder='Name' className='p-2 border border-gray-300 rounded-md'/>
                 <input {...register("email", { required: true })}  placeholder='Email' className='p-2 border border-gray-300 rounded-md'/>
                 <input {...register("password", { required: true })} placeholder='Password' type='password' className='p-2 border border-gray-300 rounded-md'  />
+                <select {...register("role", { required: true })} className='p-2 border border-gray-300 rounded-md'>
+                    <option value="" selected disabled>Select Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="receptionist">Receptionist</option>
+                    <option value="dm">Department Manager</option>
+                </select>
                 {/* {errors.exampleRequired && <span>This field is required</span>} */}
                 <input type="submit" value={'Register'} className='cursor-pointer bg-[var(--primaryColor)] p-2 rounded-md text-white border-none' />
             </form>

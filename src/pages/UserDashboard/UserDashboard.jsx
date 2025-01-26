@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Tabs } from 'antd'
 import { useLocation, useNavigate, useParams } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
@@ -27,6 +27,11 @@ const UserDashboard = () => {
     // =========== get active user ===============
     const activeUserRedux = useSelector(state => state.user.activeUser)
     console.log(activeUserRedux)
+    useEffect(()=>{
+        if(!activeUserRedux.name){
+            navigate('/')
+        }
+    },[])
 
     // =========== handle logout =================
     const handleLogout = () => {
@@ -54,7 +59,7 @@ const UserDashboard = () => {
     // ========================== tab items =================================
     const items = []
 
-    if (activeUserRedux?.name === 'admin') {
+    if (activeUserRedux?.role === 'admin') {
         items.push(
             {
                 label: 'All Benificiaries',
@@ -67,7 +72,20 @@ const UserDashboard = () => {
                 children: 'Deparmental Activities',
             }
         )
-    } else if (activeUserRedux?.name === 'receptionist') {
+    } else if (activeUserRedux?.role === 'receptionist') {
+        items.push(
+            {
+                label: 'Check Beneficiary',
+                key: '3',
+                children: <CheckBeneficiary />,
+            },
+            {
+                label: 'Add New Beneficiary',
+                key: '4',
+                children: <AddNewBeneficiary />,
+            }
+        )
+    } else if (activeUserRedux?.role === 'dm') {
         items.push(
             {
                 label: 'Check Beneficiary',
@@ -87,7 +105,7 @@ const UserDashboard = () => {
             <div className='UserDashboard w-[100%] mx-auto'>
 
                 <div className="dashboardCover  bg-[var(--primaryColor)] text-white relative w-full h-40 flex flex-col gap-2 items-center justify-center">
-                    <p className='headingH2'> {activeUserRedux?.name?.toUpperCase()}  Dashboard </p>
+                    <p className='headingH2'> {activeUserRedux?.role?.toUpperCase()}  Dashboard </p>
                     <div className='w-fit' onClick={handleLogout}>
                         <FitButton text={'Logout'} bgColor='black'/>
                     </div>
