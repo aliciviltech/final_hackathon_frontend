@@ -3,7 +3,7 @@ import axios from 'axios'
 // const BASE_URL = process.env.BASE_URL
 const apiClient = axios.create({
     baseURL: 'https://final-hackathon-backend-nu.vercel.app/',
-    timeout:3000,
+    timeout:5000,
     headers:{
         "Content-Type": "application/json"
     }

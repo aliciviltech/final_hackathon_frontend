@@ -33,7 +33,7 @@ const deleteReq = async(path)=>{
         const response = await apiClient.delete(path);
         return response;
     } catch(error){
-        console.log(error)
+        throw new Error(`${error.response?.data.message}`);        
     }
 }
 

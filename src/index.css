@@ -7,20 +7,24 @@
 }
 
 :root {
-  --primaryColor: #7351b1;
+  --primaryColor: #519eb1;
   --primaryTextColor: #757575;
 }
 
 *{
+  
   font-family: poppins;
+
 }
 
 .headingH1{
-  font-size: 22px;
+  font-size: 36px;
+  line-height: 52px;
   font-weight: bold;
 }
 .headingH2{
   font-size: 22px;
+  letter-spacing: 2px;
   font-weight: bold;
 }
 .headingH3{
@@ -28,7 +32,7 @@
   font-weight: bold;
 }
 .headingH4{
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
 }
 
