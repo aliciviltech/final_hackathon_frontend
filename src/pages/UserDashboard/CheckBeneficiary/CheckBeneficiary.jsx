@@ -85,9 +85,10 @@ const CheckBeneficiary = () => {
 
 
   return (
-    <div className='CheckBeneficiary px-4 w-screen my-10 flex flex-col justify-center items-center'>
+    <div className='CheckBeneficiary px-2 w-screen my-10 flex flex-col justify-center items-center'>
 
       <form className='flex w-[100%] sm:w-[350px] flex-col gap-2' onSubmit={handleSubmit(onSubmit)}>
+        <p className='paragraphP2'>Search already existing beneficiary:</p>
         <input type='number' {...register("cnic", { required: true })} placeholder='CNIC' className='p-2 border border-gray-300 rounded-md' />
         <input type="submit" value={'Search'} className='cursor-pointer bg-[var(--primaryColor)] p-2 rounded-md text-white border-none' />
       </form>

@@ -23,8 +23,11 @@ const postReq = async(path,data)=>{
         const response = await apiClient.post(path,data);
         return response;
     } catch(error){
-        // console.log("Error:", error.response.data.message)
-        throw new Error(`${error.response?.data.message}`);        
+        if(error.response){
+            throw new Error(`${error.response?.data.message}`);
+        } else{
+            throw new Error(`${error.message}`);
+        }
     }
 }
 

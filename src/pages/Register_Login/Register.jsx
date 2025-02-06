@@ -2,10 +2,13 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import toast from 'react-hot-toast'
 import { postReq } from '../../api/axios'
+import { useSelector } from 'react-redux'
 
 
 const Register = () => {
 
+        // ========== recieving user Role ============
+        const userRole = useSelector(state=>state.user.userRole);
 
     // ============ Api ==============
     const handleRegister = async(data)=>{
@@ -37,9 +40,7 @@ const Register = () => {
                 <input {...register("password", { required: true })} placeholder='Password' type='password' className='p-2 border border-gray-300 rounded-md'  />
                 <select {...register("role", { required: true })} className='p-2 border border-gray-300 rounded-md'>
                     <option value="" selected disabled>Select Role</option>
-                    <option value="admin">Admin</option>
-                    <option value="receptionist">Receptionist</option>
-                    <option value="dm">Department Manager</option>
+                    <option value={userRole}>{userRole=='dm'? 'department manager': userRole}</option>
                 </select>
                 {/* {errors.exampleRequired && <span>This field is required</span>} */}
                 <input type="submit" value={'Register'} className='cursor-pointer bg-[var(--primaryColor)] p-2 rounded-md text-white border-none' />

@@ -2,13 +2,20 @@ import React, { useEffect } from 'react'
 import FullButton from '../../components/Buttons/FullButton'
 import { useNavigate } from 'react-router'
 import { useDispatch } from 'react-redux'
-import { clearUser } from '../../redux/reducers/userReducer'
+import { clearUser, storeUserRole } from '../../redux/reducers/userReducer'
 
 const Home = () => {
   
   // variables
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  // ========= handle navigate ============
+  const handleNavigate = (role)=>{
+    navigate('/register-login?tab=login')
+    dispatch(storeUserRole(role))
+  }
+
 
   // ========== handle logout ===========
     const handleLogout = ()=>{
@@ -31,13 +38,13 @@ const Home = () => {
 
       {/* right col */}
       <div className="col2 w-full lg:w-[50%] h-[50vh] lg:h-screen flex flex-col gap-4 justify-center items-center">
-        <div className="btn" onClick={()=>navigate('/register-login?tab=login&type=admin')}>
+        <div className="btn" onClick={()=>handleNavigate('admin')}>
           <FullButton text={'Go As Admin'} />
         </div>
-        <div className="btn" onClick={()=>navigate('/register-login?tab=login&type=receptionist')}>
+        <div className="btn" onClick={()=>handleNavigate('receptionist')}>
           <FullButton text={'Go As Receptionist'} />
         </div>
-        <div className="btn" onClick={()=>navigate('/register-login?tab=login&type=dm')}>
+        <div className="btn" onClick={()=>handleNavigate('dm')}>
           <FullButton text={'Go As Department Manager'} />
         </div>
       </div>

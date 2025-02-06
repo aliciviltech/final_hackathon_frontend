@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useTransition } from 'react'
 import { useForm } from "react-hook-form"
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +9,9 @@ import { persistor } from '../../redux/store/store';
 
 
 const Login = () => {
+
+    // ========== getting user Role ============
+    const userRole = useSelector(state=>state.user.userRole);
 
     // =========== navigate =========
     const navigate = useNavigate();
@@ -22,7 +25,7 @@ const Login = () => {
     const [user, setUser] = useState(userInStorage);
 
 
-    // ============ Api ==============
+    // ============ Api / handle login ==============
     const handleLogin = async (data) => {
         try {
             const response = await postReq('/auth/login', data)
@@ -39,6 +42,23 @@ const Login = () => {
             toast.error(error.message)
         }
     }
+
+    // =============== login default values set ===================
+    let defaulEmail;
+    let defaulPassword;
+    const setLoginValues = ()=>{
+        if(userRole=='admin'){
+            defaulEmail='ali@gmail.com'
+            defaulPassword='111111'
+        } else if(userRole == 'dm'){
+            defaulEmail='shahid@gmail.com'
+            defaulPassword='111111'
+        } else{
+            defaulEmail='shafiq@gmail.com'
+            defaulPassword='111111'
+        }
+    }
+    setLoginValues()
 
     // ========== handle logout ===========
     const handleLogout = () => {
@@ -67,8 +87,10 @@ const Login = () => {
                     <p>{user.name} is already logged in. <span className='underline text-blue-600 cursor-pointer' onClick={handleLogout}>Logout</span></p>
                     :
                     <form className='flex flex-col gap-2' onSubmit={handleSubmit(onSubmit)}>
-                        <input {...register("email")} placeholder='Email' className='p-2 border border-gray-300 rounded-md' />
-                        <input {...register("password")} placeholder='Password' type='password' className='p-2 border border-gray-300 rounded-md' />
+                        <input value={defaulEmail} {...register("email")} placeholder='Email' className='p-2 border border-gray-300 rounded-md' />
+                        <input value={defaulPassword} {...register("password")} placeholder='Password' type='password' className='p-2 border border-gray-300 rounded-md' />
+                        <label >Role:</label>
+                        <input value={userRole} {...register("selectedRole")} disabled className='bg-gray-200 p-2 border border-gray-300 rounded-md' />
                         {/* {errors.exampleRequired && <span>This field is required</span>} */}
                         <input type="submit" value={'Login'} className='cursor-pointer bg-[var(--primaryColor)] p-2 rounded-md text-white border-none' />
                     </form>

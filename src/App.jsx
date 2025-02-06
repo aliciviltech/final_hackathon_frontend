@@ -8,9 +8,9 @@ import Home from './pages/Home/Home'
 import CheckBeneficiary from './pages/UserDashboard/CheckBeneficiary/CheckBeneficiary'
 import AllBeneficiaries from './pages/UserDashboard/AllBeneficiaries/AllBeneficiaries'
 import ViewBeneficiary from './pages/UserDashboard/ViewBeneficiary/ViewBeneficiary'
-import Activity from './pages/UserDashboard/Activity/Activity'
 import AddNewBeneficiary from './pages/UserDashboard/AddNewBeneficiary/AddNewBeneficiary'
 import EditBeneficiary from './pages/UserDashboard/EditBeneficiary/EditBeneficiary'
+import Activities from './pages/UserDashboard/Activity/Activities'
 
 const App = () => {
   
@@ -25,7 +25,7 @@ const App = () => {
       <Route path='/register-login' element={<Register_Login/>}/>
       <Route path='/user-dashboard' element={<UserDashboard/>}>
         <Route path='/user-dashboard/all-beneficiaries' element={<AllBeneficiaries/>}/>
-        <Route path='/user-dashboard/activity' element={<Activity/>}/>
+        <Route path='/user-dashboard/activities' element={<Activities/>}/>
         <Route path='/user-dashboard/check-beneficiary' element={<CheckBeneficiary/>}/>
         <Route path='/user-dashboard/add-beneficiary' element={<AddNewBeneficiary/>}/>
         <Route path='/user-dashboard/view-beneficiary/:id' element={<ViewBeneficiary/>}/>

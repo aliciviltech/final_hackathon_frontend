@@ -17,6 +17,11 @@
 
 }
 
+.sample{
+  color: #fda40028;
+  color: #fda400;
+}
+
 .headingH1{
   font-size: 36px;
   line-height: 52px;
@@ -35,6 +40,9 @@
   font-size: 18px;
   font-weight: bold;
 }
+.headingH5{
+  font-size: 18px;
+}
 
 .paragraphP1{
   font-size: 16px;
@@ -42,13 +50,12 @@
 }
 
 .paragraphP2{
-  font-size: 16px;
+  font-size: 14px;
   color: #757575;
 }
 
 .paragraphP3{
-  font-size: 16px;
-  color: #757575;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .paragraphP4{
