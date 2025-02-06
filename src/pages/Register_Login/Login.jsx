@@ -26,10 +26,13 @@ const Login = () => {
 
 
     // ============ Api / handle login ==============
+    const [loader, setLoader] = useState(false)
     const handleLogin = async (data) => {
+        setLoader(true)
         try {
             const response = await postReq('/auth/login', data)
             toast.success('Login successful')
+            setLoader(false);
             console.log('login success')
 
             setUser(response.data.user);
@@ -40,6 +43,7 @@ const Login = () => {
         } catch (error) {
             console.log('Error in login:', error.message)
             toast.error(error.message)
+            setLoader(false);
         }
     }
 
@@ -87,12 +91,12 @@ const Login = () => {
                     <p>{user.name} is already logged in. <span className='underline text-blue-600 cursor-pointer' onClick={handleLogout}>Logout</span></p>
                     :
                     <form className='flex flex-col gap-2' onSubmit={handleSubmit(onSubmit)}>
-                        <input value={defaulEmail} {...register("email")} placeholder='Email' className='p-2 border border-gray-300 rounded-md' />
-                        <input value={defaulPassword} {...register("password")} placeholder='Password' type='password' className='p-2 border border-gray-300 rounded-md' />
+                        <input defaultValue={defaulEmail} {...register("email")} placeholder='Email' className='p-2 border border-gray-300 rounded-md' />
+                        <input defaultValue={defaulPassword} {...register("password")} placeholder='Password' type='password' className='p-2 border border-gray-300 rounded-md' />
                         <label >Role:</label>
                         <input value={userRole} {...register("selectedRole")} disabled className='bg-gray-200 p-2 border border-gray-300 rounded-md' />
                         {/* {errors.exampleRequired && <span>This field is required</span>} */}
-                        <input type="submit" value={'Login'} className='cursor-pointer bg-[var(--primaryColor)] p-2 rounded-md text-white border-none' />
+                        <input type="submit" value={loader?'Loading . . .':'Login'} className='cursor-pointer bg-[var(--primaryColor)] p-2 rounded-md text-white border-none' />
                     </form>
             }
 
